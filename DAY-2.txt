@@ -1,0 +1,61 @@
+DAY-2
+--------------------------------------------------------------------------
+
+What is a webserver ?
+
+Is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache. 
+Written in C language.
+Nginx has grown in popularity since its release due to its light-weight resource utilization and its ability to scale easily on minimal hardware.
+used by high traffic websites such as Dropbox, Netflix,Zynga,NASA.
+
+#!/bin/bash
+sudo su
+yum update -y
+yum install httpd -y #apache
+systemctl start httpd
+systemctl enable httpd #server restart
+echo "Hello AWS boys i am from $(hostname -f)" > /var/www/html/index.html
+
+go to server and check cat /var/www/html/index.html
+
+lab in nginx
+
+-------------------------------------------------------------------------------
+
+IP Concepts 
+
+Public IP /Private IP 
+
+STATIC AND DYNAMIC
+
+What is elastic IP ?
+
+Elastic IP (explain in paint)
+An Elastic IP address is a static IPv4 address designed for dynamic cloud computing.
+By using an Elastic IP address, you can mask the failure of an instance or software 
+by rapidly remapping the address to another instance in your account.
+
+-------------------------------------------------------------------------
+
+What is Load balancer?
+
+What is Auto scaling ?
+
+LAB -AWS ELB
+------------------------------------------------------------------------
+
+AWS::EC2::PlacementGroup
+A cluster placement group is a logical grouping of instances within a single Availability Zone 
+that benefit from low network latency, high network throughput
+
+Network Interfaces/NIC card
+--------------------------------------------------------------------------------
+lAB1
+Changing default port for SSH 22
+
+----------------------------------------------------------------------------
+Amazon S3
+GLACIER
+Datadog (Monitoring as a service)
+Cloud watch 
+--------------------------------------------------------------------------
