@@ -56,6 +56,200 @@ Changing default port for SSH 22
 ----------------------------------------------------------------------------
 Amazon S3
 GLACIER
+
 Datadog (Monitoring as a service)
 Cloud watch 
---------------------------------------------------------------------------
+----------------------------------------------------
+S3(Amazon Simple Storage Service is a service offered by Amazon Web Services that provides object storage through a web service interface. 
+===============================
+
+1 S3 is KEY/value store for storing objects
+2.Amazon S3 allows people to store objects 
+  (files) " buckets" ( Directories) 
+3. Buckets must have a globally unique name
+4. Bukets are defined at the regional leval
+5. Naming convention
+6. No uppercase
+7. NO underscore
+8. 3-63 characters long
+9. Not an IP
+10. Must start with lowercase letter or number
+11. Objects (files) have a key. The key is the full path.
+12. <my_bucket>/my_file.txt
+13. <my_bucket>/my_folder1/another_folder/myfile.txt 
+14. Just keys with very long names that contains slashes "/"
+15.  Object value is content of the body
+16. Max size is 5 TB.
+17. If uploading more than 5tb must use "Multi-part upload"
+18. metadata (list of text key) value pairs
+19. Tags
+20. Version ID ( If versioning is enabled) 
+21. how many bucket can create one aws account?
+
+	100 buckets
+	===========
+	By default, you can create up to 100 buckets in each of your AWS accounts. 
+	If you need additional buckets, 
+	you can increase your account bucket limit to a maximum of 1,000 buckets
+	by submitting a service limit increase.
+	
+
+	
+AWS S3 - Versioning
+====================
+
+1. You can version your files in AWS S3.
+2. It is enabled at the bucket level.
+3. Same key overwritte will increment the Version
+    1,2,3 
+4. It is best practise to version your bucket.
+5. Protect aganist unintended deletes
+6. (Ability to restore a version)
+7. Easy roll back to previous version
+8. Any files that is is not versioned prior to enabling versioning 
+     Version "null"
+
+
+ 
+ https://aws.amazon.com/s3/storage-classes/?nc=sn&loc=3
+
+ Amazon S3 Storage Classes:
+
+ ============================
+ Amazon S3 offers a range of storage classes designed for different use cases.
+ These include S3 Standard for general-purpose storage of frequently accessed data;
+ S3 Intelligent-Tiering for data with unknown or changing access patterns; S3 Standard-Infrequent Access
+ (S3 Standard-IA) and S3 One Zone-Infrequent Access (S3 One Zone-IA) 
+ for long-lived, but less frequently accessed data; and Amazon S3 Glacier (S3 Glacier) 
+ and Amazon S3 Glacier Deep Archive (S3 Glacier Deep Archive) for long-term archive
+ and digital preservation. If you have data residency requirements that can’t be
+ met by an existing AWS Region, you can use the S3 Outposts storage class to 
+ store your S3 data on-premises. Amazon S3 also offers capabilities to manage
+ your data throughout its lifecycle. Once an S3 Lifecycle policy is set, 
+ your data will automatically transfer to a different storage class without
+ any changes to your application. 
+
+
+General purpose
+Amazon S3 Standard (S3 Standard)
+================================
+
+S3 Standard offers high durability, availability, and performance object storage for frequently 
+accessed data. Because it delivers low latency and high throughput, 
+S3 Standard is appropriate for a wide variety of use cases, 
+including cloud applications, dynamic websites, content distribution,
+ mobile and gaming applications, and big data analytics. 
+ S3 Storage Classes can be configured at the object level 
+ and a single bucket can contain objects stored across S3 Standard, 
+ S3 Intelligent-Tiering, S3 Standard-IA, and S3 One Zone-IA. 
+ You can also use S3 Lifecycle policies to automatically transition objects between storage 
+ classes without any application changes. 
+ 
+ 
+ Amazon S3 Intelligent-Tiering (S3 Intelligent-Tiering):
+ ========================================================
+ 
+ Amazon S3 Intelligent-Tiering (S3 Intelligent-Tiering) is the only cloud storage
+ class that delivers automatic cost savings by moving objects between four access
+ tiers when access patterns change. The S3 Intelligent-Tiering storage class is designed
+ to optimize costs by automatically moving data to the most cost-effective access tier, 
+ without operational overhead. 
+ 
+ 
+ Key Features:
+ =============
+
+Automatically optimizes storage costs for data with changing access patterns
+Stores objects in four access tiers, optimized for frequent, infrequent, archive, and deep archive access
+Frequent and Infrequent Access tiers have same low latency and high throughput performance of S3 Standard
+Activate optional automatic archive capabilities for objects that become rarely accessed
+Archive access and deep Archive access tiers have same performance as Glacier and Glacier Deep Archive
+Designed for durability of 99.999999999% of objects across multiple Availability Zones
+Designed for 99.9% availability over a given year
+
+
+Infrequent access
+Amazon S3 Standard-Infrequent Access (S3 Standard-IA)
+====================================================
+
+S3 Standard-IA is for data that is accessed less frequently,
+ but requires rapid access when needed. 
+ S3 Standard-IA offers the high durability, 
+ high throughput, and low latency of S3 Standard,
+ with a low per GB storage price and per GB retrieval fee. 
+ 
+ Key Features:
+ ================
+
+Same low latency and high throughput performance of S3 Standard
+Designed for durability of 99.999999999% of objects across multiple Availability Zones
+Resilient against events that impact an entire Availability Zone
+Data is resilient in the event of one entire Availability Zone destruction
+Designed for 99.9% availability over a given year
+
+Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA)
+=====================================================
+
+S3 One Zone-IA is for data that is accessed less frequently, 
+but requires rapid access when needed. Unlike other S3 Storage 
+Classes which store data in a minimum of three Availability Zones (AZs),
+ S3 One Zone-IA stores data in a single AZ and costs 20% less than S3 Standard-IA. 
+ S3 One Zone-IA is ideal for customers who want a lower-cost option for infrequently 
+ accessed data but do not require the availability and resilience of S3 Standard or 
+ S3 Standard-IA. It’s a good choice for storing secondary backup copies of on-premises
+ data or easily re-creatable data. You can also use it as cost-effective storage 
+ for data that is replicated from another AWS Region using S3 Cross-Region Replication.
+ 
+ Key Features:
+ ================
+Same low latency and high throughput performance of S3 Standard
+Designed for durability of 99.999999999% of objects in a single Availability Zone†
+Designed for 99.5% availability over a given year
+Backed with the Amazon S3 Service Level Agreement for availability
+Supports SSL for data in transit and encryption of data at rest
+S3 Lifecycle management for automatic migration of objects to other S3 Storage Classes
+
+Archive
+Amazon S3 Glacier (S3 Glacier)
+===============================
+
+S3 Glacier is a secure, durable, and low-cost storage class for data archiving. 
+You can reliably store any amount of data at costs that are competitive with or cheaper 
+than on-premises solutions. To keep costs low yet suitable for varying needs, 
+S3 Glacier provides three retrieval options that range from a few minutes to hours.
+ You can upload objects directly to S3 Glacier, or use S3 Lifecycle policies
+ to transfer data between any of the S3 Storage Classes for active data (S3 Standard,
+ S3 Intelligent-Tiering, S3 Standard-IA, and S3 One Zone-IA) and S3 Glacier. 
+ 
+ Key Features:
+ ==================
+Designed for durability of 99.999999999% of objects across multiple Availability Zones
+Data is resilient in the event of one entire Availability Zone destruction
+Supports SSL for data in transit and encryption of data at rest
+Low-cost design is ideal for long-term archive
+Configurable retrieval times, from minutes to hours
+
+Amazon S3 Glacier Deep Archive (S3 Glacier Deep Archive)
+==========================================================
+S3 Glacier Deep Archive is Amazon S3’s lowest-cost storage class and supports 
+long-term retention and digital preservation for data that may be accessed 
+once or twice in a year. It is designed for customers — particularly those 
+in highly-regulated industries, such as the Financial Services, Healthcare,
+ and Public Sectors — that retain data sets for 7-10 years or longer to meet 
+ regulatory compliance requirements. 
+ 
+ Key Features:
+ ================
+
+Designed for durability of 99.999999999% of objects across multiple Availability Zone
+Lowest cost storage class designed for long-term retention of data that will be retained for 7-10 years
+Ideal alternative to magnetic tape libraries
+Retrieval time within 12 hours.
+ https://aws.amazon.com/s3/storage-classes/
+ 
+ Buket Replication:
+ ===================
+ 
+ Amazon S3 Cross-Region Replication (CRR) 
+ Amazon S3 Same-Region Replication (SRR)
+ Amazon Replication Time Control--------------------------------------------------------------------------
